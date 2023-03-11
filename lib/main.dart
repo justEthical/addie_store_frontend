@@ -3,6 +3,8 @@ import 'package:addie_store/Screens/Welcome/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'Screens/LoginAndSignup/login_signup.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -29,7 +31,7 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WelcomeScreens();
+    return const LoginSignUp();
   }
 }
 
