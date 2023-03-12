@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 
+import 'Widgets/login_form.dart';
 import 'Widgets/login_signup_switcher.dart';
 
 class LoginSignUp extends StatefulWidget {
@@ -27,6 +28,7 @@ class _LoginSignUpState extends State<LoginSignUp> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Obx(() => c.isLogin.value
                 ? const TopText(
@@ -39,7 +41,9 @@ class _LoginSignUpState extends State<LoginSignUp> {
             const SizedBox(
               height: 20,
             ),
-            const LoginSignUpSwitch()
+            const LoginSignUpSwitch(),
+            const SizedBox(height: 50,),
+             LoginForm()
           ],
         ),
       )),
