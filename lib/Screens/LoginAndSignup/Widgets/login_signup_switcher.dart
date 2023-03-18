@@ -74,7 +74,7 @@ class _LoginSignUpSwitchState extends State<LoginSignUpSwitch> {
         child: Center(
             child: Text(
           title,
-          style: const TextStyle(fontWeight: FontWeight.w600),
+          style: const TextStyle(fontWeight: FontWeight.w400),
         )),
       ),
     );

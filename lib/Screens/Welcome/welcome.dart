@@ -53,6 +53,7 @@ class _WelcomeScreensState extends State<WelcomeScreens> {
               flex: 1,
               child: FloatingActionButton(
                 onPressed: () {
+                  // if(c.welcomePageCtrl)
                   c.welcomePageCtrl.nextPage(
                       duration: const Duration(milliseconds: 250),
                       curve: Curves.easeIn);

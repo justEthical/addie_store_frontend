@@ -1,5 +1,6 @@
 import 'package:addie_store/Constants/app_assets.dart';
 import 'package:addie_store/Controllers/login_signup_ctrl.dart';
+import 'package:addie_store/Screens/LoginAndSignup/Widgets/Or_separator.dart';
 import 'package:addie_store/Screens/LoginAndSignup/Widgets/custom_text_field.dart';
 import 'package:addie_store/Screens/LoginAndSignup/Widgets/login_button.dart';
 import 'package:flutter/material.dart';
@@ -36,41 +37,11 @@ class LoginForm extends StatelessWidget {
         const SizedBox(
           height: 40,
         ),
-        const LoginButton(),
+        SubmitButton(onTap: (){},),
         const SizedBox(height: 20,),
-        Row(
-          children: [
-            Expanded(
-              child: Container(
-                height: 1,
-                color: Colors.grey.withOpacity(0.3),
-              ),
-            ),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(20)),
-              child: const Center(
-                child: Text(
-                  "OR",
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                height: 1,
-                color: Colors.grey.withOpacity(0.3),
-              ),
-            )
-          ],
-        ),
-        SizedBox(height: 20,),
-        GoogleLoginButton()
+        const OrSeparator(),
+        const SizedBox(height: 20,),
+        const GoogleLoginButton()
       ],
     ));
   }

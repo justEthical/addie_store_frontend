@@ -11,6 +11,7 @@ class CustomTextField extends StatefulWidget {
   final String leadingIcon;
   final String title;
   final bool isPassword;
+  final TextInputType? keyBoardType;
   const CustomTextField({
     super.key,
     required this.textCtrl,
@@ -18,6 +19,7 @@ class CustomTextField extends StatefulWidget {
     required this.leadingIcon,
     required this.title,
     required this.isPassword,
+    this.keyBoardType
   });
 
   @override
@@ -43,7 +45,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
           child: Text(
             widget.title,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
           ),
         ),
         Container(
@@ -54,6 +56,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           child: TextFormField(
             obscureText: isObscure,
             controller: widget.textCtrl,
+            keyboardType: widget.keyBoardType,
             decoration: InputDecoration(
               prefixIcon: Container(
                   padding: const EdgeInsets.all(15),

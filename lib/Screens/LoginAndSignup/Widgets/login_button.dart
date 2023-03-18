@@ -6,23 +6,25 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class LoginButton extends StatelessWidget {
-  const LoginButton({super.key});
+class SubmitButton extends StatelessWidget {
+  final String title;
+  final onTap;
+  const SubmitButton({super.key,this.title="Login", required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: () {},
+        onPressed: onTap,
         style: ElevatedButton.styleFrom(
             fixedSize: Size(Get.width - 40, 55),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             backgroundColor: ColorConstants.primaryText),
-        child: const Center(
+        child: Center(
             child: Text(
-          "Login",
-          style: TextStyle(
-              fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white),
+          title.toString(),
+          style: const TextStyle(
+              fontSize: 18, fontWeight: FontWeight.w400, color: Colors.white),
         )));
   }
 }
@@ -38,7 +40,7 @@ class GoogleLoginButton extends StatelessWidget {
             fixedSize: Size(Get.width - 40, 55),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
-                side: const BorderSide(width: 1, color: Colors.black)),
+                side: const BorderSide(width: 0.56, color: Colors.black)),
             backgroundColor: Colors.white),
         child: Center(
             child: Row(
@@ -52,7 +54,7 @@ class GoogleLoginButton extends StatelessWidget {
               "Login with Google",
               style: TextStyle(
                   fontSize: 18,
-                  fontWeight: FontWeight.w600,
+                  // fontWeight: FontWeight.w600,
                   color: ColorConstants.primaryText),
             ),
           ],

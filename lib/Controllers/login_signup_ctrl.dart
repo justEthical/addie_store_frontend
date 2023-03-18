@@ -9,6 +9,10 @@ class LoginSignUpController extends GetxController {
   // Text fields controllers
   TextEditingController loginEmail  = TextEditingController();
   TextEditingController loginPassword  = TextEditingController();
+  TextEditingController registerEmail  = TextEditingController();
+  TextEditingController registerPassword  = TextEditingController();
+  TextEditingController registerConfirmPassword = TextEditingController();
+  TextEditingController registerPhoneNo = TextEditingController();
 
   // login register switch variables  
   var isLogin = true.obs;
