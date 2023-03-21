@@ -2,6 +2,7 @@ import 'package:addie_store/Constants/app_assets.dart';
 import 'package:addie_store/Constants/color_constants.dart';
 import 'package:addie_store/Constants/string_constants.dart';
 import 'package:addie_store/Controllers/welcome_ctrl.dart';
+import 'package:addie_store/Screens/LoginAndSignup/login_signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -53,10 +54,13 @@ class _WelcomeScreensState extends State<WelcomeScreens> {
               flex: 1,
               child: FloatingActionButton(
                 onPressed: () {
-                  // if(c.welcomePageCtrl)
-                  c.welcomePageCtrl.nextPage(
-                      duration: const Duration(milliseconds: 250),
-                      curve: Curves.easeIn);
+                  if (c.welcomePageCtrl.page == 2.0) {
+                    Get.offAll(const LoginSignUp());
+                  } else {
+                    c.welcomePageCtrl.nextPage(
+                        duration: const Duration(milliseconds: 250),
+                        curve: Curves.easeIn);
+                  }
                 },
                 backgroundColor: Colors.white,
                 child: const RotatedBox(

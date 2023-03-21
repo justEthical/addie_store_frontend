@@ -8,6 +8,6 @@ class WelcomeScreenController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    welcomePageCtrl.addListener(() {welcomePageCtrl.page;});
+    welcomePageCtrl.addListener(() {print(welcomePageCtrl.page);});
   }
 }

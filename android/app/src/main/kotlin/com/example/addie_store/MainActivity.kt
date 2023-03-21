@@ -1,4 +1,4 @@
-package com.example.addie_store
+package com.addie.store
 
 import io.flutter.embedding.android.FlutterActivity
 
