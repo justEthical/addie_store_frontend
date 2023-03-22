@@ -1,5 +1,5 @@
-class AppAssets{
-  static String _getImagePath(String name){
+class AppAssets {
+  static String _getImagePath(String name) {
     return "Assets/Images/$name";
   }
 
@@ -13,6 +13,11 @@ class AppAssets{
   static String eyeClosed = _getImagePath("eye-off.svg");
   static String phoneIcon = _getImagePath("phone.svg");
 
+  // Bottom bar icons
+  static String home = _getImagePath("home.svg");
+  static String food = _getImagePath("fork.svg");
+  static String grocery = _getImagePath("cart.svg");
+  static String profile = _getImagePath("user.svg");
+  
   static String googleIcon = _getImagePath("google.svg");
-
 }

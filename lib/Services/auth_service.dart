@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   static FirebaseAuth auth = FirebaseAuth.instance;
@@ -17,7 +18,8 @@ class AuthService {
           email: email, password: password);
       if (userCredential.user != null) {
         user = userCredential.user;
-        Get.offAll(const TabView());
+        await loginPersistent();
+        Get.offAll(TabView());
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
@@ -53,6 +55,8 @@ class AuthService {
             await auth.signInWithCredential(credential);
 
         user = userCredential.user;
+        await loginPersistent();
+        Get.offAll(TabView());
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           // handle the error here
@@ -79,7 +83,8 @@ class AuthService {
       );
       user = credential.user;
       if (user != null) {
-        Get.offAll(const TabView());
+        await loginPersistent();
+        Get.offAll(TabView());
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
@@ -93,5 +98,10 @@ class AuthService {
       Fluttertoast.showToast(msg: "Oops! $e");
       print(e);
     }
+  }
+
+  static loginPersistent()async{
+    final _prefs = await SharedPreferences.getInstance();
+    _prefs.setBool("loggedIn", true);
   }
 }

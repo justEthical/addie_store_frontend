@@ -1,5 +1,6 @@
 import 'package:addie_store/Constants/fonts.dart';
 import 'package:addie_store/Screens/Welcome/welcome.dart';
+import 'package:addie_store/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,20 +21,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Addie Store',
+      // color: 
       theme: ThemeData(
         fontFamily: AppFonts.figtree,
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
       home: const Wrapper(),
     );
   }
 }
 
-class Wrapper extends StatelessWidget {
-  const Wrapper({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const WelcomeScreens();
-  }
-}

@@ -2,6 +2,7 @@ import 'package:addie_store/Controllers/login_signup_ctrl.dart';
 import 'package:addie_store/Screens/LoginAndSignup/Widgets/top_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Widgets/login_form.dart';
 import 'Widgets/login_signup_switcher.dart';
@@ -16,6 +17,13 @@ class LoginSignUp extends StatefulWidget {
 
 class _LoginSignUpState extends State<LoginSignUp> {
   final LoginSignUpController c = Get.put(LoginSignUpController());
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _setFirstInstallFalse();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,5 +55,10 @@ class _LoginSignUpState extends State<LoginSignUp> {
         ),
       )),
     );
+  }
+
+  _setFirstInstallFalse()async{
+    final _prefs = await SharedPreferences.getInstance();
+    _prefs.setBool("firstInstall", false);
   }
 }
