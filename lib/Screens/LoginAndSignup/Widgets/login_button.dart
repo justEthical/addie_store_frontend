@@ -39,7 +39,7 @@ class GoogleLoginButton extends StatelessWidget {
     return ElevatedButton(
         onPressed: () async {
           CustomLoader.showLoader();
-          await AuthService.googleSignIn();
+          await AuthService.googleSignInSignUp();
           CustomLoader.hideLoader();
         },
         style: ElevatedButton.styleFrom(

@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Addie Store',
       // color: 
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: AppFonts.figtree,
         primarySwatch: Colors.orange,

@@ -1,3 +1,4 @@
+import 'package:addie_store/Screens/LoginAndSignup/login_signup.dart';
 import 'package:addie_store/Screens/TabView/tab_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   static FirebaseAuth auth = FirebaseAuth.instance;
+  static final GoogleSignIn googleSignIn = GoogleSignIn();
   static User? user;
 
   static Future<void> registerUser(
@@ -33,8 +35,7 @@ class AuthService {
     }
   }
 
-  static Future<void> googleSignIn() async {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
+  static Future<void> googleSignInSignUp() async {
     // google signIn pop up
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.signIn();
@@ -76,8 +77,7 @@ class AuthService {
   static Future<void> emailLogin(
       {required String email, required String password}) async {
     try {
-      final credential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -93,6 +93,8 @@ class AuthService {
                 "This email is registered with google, please use google sign in");
         print(
             'This email is registered with google, please use google sign in');
+      } else {
+        Fluttertoast.showToast(msg: e.toString());
       }
     } catch (e) {
       Fluttertoast.showToast(msg: "Oops! $e");
@@ -100,7 +102,19 @@ class AuthService {
     }
   }
 
-  static loginPersistent()async{
+  static Future<void> logout() async {
+    try {
+      await googleSignIn.signOut();
+      await auth.signOut();
+      final _prefs = await SharedPreferences.getInstance();
+      _prefs.remove("loggedIn");
+      Get.offAll(const LoginSignUp());
+    } catch (e) {
+      print("Logout error $e");
+    }
+  }
+
+  static loginPersistent() async {
     final _prefs = await SharedPreferences.getInstance();
     _prefs.setBool("loggedIn", true);
   }
