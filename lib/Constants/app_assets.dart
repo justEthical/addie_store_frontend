@@ -18,6 +18,13 @@ class AppAssets {
   static String food = _getImagePath("fork.svg");
   static String grocery = _getImagePath("shopping-bag.svg");
   static String profile = _getImagePath("user.svg");
+
+  // Categories icon
+  static String burger = _getImagePath("burger.svg");
+  static String chicken = _getImagePath("chicken.svg");
+  static String drink = _getImagePath("drink.svg");
+  static String pizza = _getImagePath("pizza.svg");
+  static String meal = _getImagePath("meal.svg");
   
   static String googleIcon = _getImagePath("google.svg");
 }

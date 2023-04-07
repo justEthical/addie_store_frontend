@@ -16,12 +16,13 @@ class _SearchBarState extends State<SearchBar> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
-      width: Get.width - 30,
+      width: Get.width - 50,
       height: 50,
       child: TextField(
         decoration: InputDecoration(
             isDense: true,
             filled: true,
+            hintText: "Search Pizza, Dal, Aata",
             fillColor: Colors.grey.withOpacity(0.1),
             prefixIcon: const Icon(FeatherIcons.search),
             enabledBorder: OutlineInputBorder(

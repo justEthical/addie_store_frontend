@@ -1,5 +1,8 @@
+import 'package:addie_store/CommonWidgets/notification_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+
+import '../Constants/color_constants.dart';
 
 class CommonAppBar{
   static tabScreensAppBar({required String title}){
@@ -10,24 +13,50 @@ class CommonAppBar{
         ),
         backgroundColor: Colors.white,
         elevation: 0,
-        actions: [
-          Container(
+        actions: const [
+          NotificationIcon()
+        ],
+      );
+  }
+
+  static appBarWithLocation(){
+    return AppBar(
+        leading: InkWell(
+          onTap: () {},
+          child: Container(
             width: 40,
             height: 30,
-            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                      offset: Offset(0, 5),
-                      color: Colors.black12,
-                      spreadRadius: 2,
-                      blurRadius: 2)
-                ]),
-                child: const Icon(FeatherIcons.bell),
-          )
-        ],
+            child: const Icon(FeatherIcons.alignLeft),
+          ),
+        ),
+        title: Column(
+          children: [
+            const Text(
+              "Current location",
+              style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.bold),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(
+                  FeatherIcons.mapPin,
+                  color: ColorConstants.primaryText,
+                  size: 20,
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text("Delhi India"),
+              ],
+            )
+          ],
+        ),
+        actions: const [NotificationIcon()],
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       );
   }
 }

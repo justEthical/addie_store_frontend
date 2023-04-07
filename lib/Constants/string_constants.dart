@@ -11,4 +11,6 @@ class Strings {
   static const String fortuneOil = "https://etimg.etb2bimg.com/photo/79411775.cms";
   static const String iceCream = "https://eightpetals.in/wp-content/uploads/2020/05/Vadilal-Banner-1.png";
   static const String cokeZero = "https://i0.wp.com/orissadiary.com/wp-content/uploads/2022/03/cocacola.jpg?resize=877%2C494&ssl=1%22";
+  static const String Aashirvaad = "https://www.aashirvaad.com/img/whole_wheat/shudh-chakki-mar.png";
+  static const String havmourIceCream = "https://havmor.com/thecoolestsummerjob/frontend/images/slider-1.jpg";
 }
