@@ -1,6 +1,6 @@
 # addie_store
 
-A new Flutter project.
+Taking local shops online.
 
 ## Getting Started
 
