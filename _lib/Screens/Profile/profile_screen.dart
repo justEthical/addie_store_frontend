@@ -1,9 +1,7 @@
 import 'package:addie_store/CommonWidgets/app_bar.dart';
 import 'package:addie_store/CommonWidgets/custom_loader.dart';
 import 'package:addie_store/Constants/color_constants.dart';
-import 'package:addie_store/Controllers/tab_controller.dart';
 import 'package:addie_store/Services/auth_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -23,7 +21,13 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final TabViewController tvc = Get.find();
+  Widget? k;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    k = RandomAvatar("Ashoka", width: 150, height: 150, trBackground: false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,19 +39,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
         // mainAxisAlignment: MainAxisAlignment.center,
         // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const ProfilePicture(),
+          ProfilePicture(
+            pic: k!,
+          ),
           const SizedBox(
             height: 20,
           ),
           SizedBox(
               width: Get.width - 30,
               height: 22,
-              child: Center(
+              child: const Center(
                   child: Text(
-                FirebaseAuth.instance.currentUser!.displayName ?? "",
+                "Ashok Kumar",
                 overflow: TextOverflow.ellipsis,
-                style:
-                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ))),
           const SizedBox(
             height: 5,
@@ -55,12 +60,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           SizedBox(
               width: Get.width - 30,
               height: 22,
-              child: Center(
+              child: const Center(
                   child: Text(
-                tvc.userProfile!.email!,
+                "ammmm4507@gmail.com",
                 overflow: TextOverflow.ellipsis,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ))),
           const SizedBox(
             height: 20,
@@ -74,7 +78,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () {},
                     icon: FeatherIcons.phone,
                     heading: "Phone",
-                    content: tvc.userProfile!.phone_number!,
+                    content: "9650139032",
                   ),
                   ProfileOptionTile(
                       onTap: () {},

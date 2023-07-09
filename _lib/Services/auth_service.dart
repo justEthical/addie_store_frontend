@@ -1,14 +1,10 @@
 import 'package:addie_store/Screens/LoginAndSignup/login_signup.dart';
 import 'package:addie_store/Screens/TabView/tab_view.dart';
-import 'package:addie_store/Services/firestore_service.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../Models/user_profile_model.dart';
 
 class AuthService {
   static FirebaseAuth auth = FirebaseAuth.instance;
@@ -18,19 +14,12 @@ class AuthService {
   static Future<void> registerUser(
       {required String email,
       required String password,
-      String? name,
       required String phone}) async {
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
       if (userCredential.user != null) {
         user = userCredential.user;
-        DbService.createProfile(UserProfileModel(
-          full_name: name??"User",
-          email: user!.email,
-          phone_number: user!.phoneNumber??"",
-          profile_pic: user!.photoURL??"",
-        ));
         await loginPersistent();
         Get.offAll(TabView());
       }
@@ -67,12 +56,6 @@ class AuthService {
             await auth.signInWithCredential(credential);
 
         user = userCredential.user;
-        DbService.createProfile(UserProfileModel(
-          full_name: user!.displayName,
-          email: user!.email,
-          phone_number: user!.phoneNumber??"",
-          profile_pic: user!.photoURL??"",
-        ));
         await loginPersistent();
         Get.offAll(TabView());
       } on FirebaseAuthException catch (e) {

@@ -38,7 +38,6 @@ class CustomBottomBar extends StatelessWidget {
               /// Likes
               _bottomButton(title: "Food", icon: AppAssets.food),
 
-              _bottomButton(title: "Store", icon: AppAssets.nearbyStores),
               /// Search
               _bottomButton(title: "Grocery", icon: AppAssets.grocery),
 

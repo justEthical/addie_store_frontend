@@ -61,7 +61,6 @@ class SignUpForm extends StatelessWidget {
                     await AuthService.registerUser(
                         email: c.registerEmail.text.trim(),
                         password: c.registerPassword.text,
-                      
                         phone: c.registerPhoneNo.text);
                     CustomLoader.hideLoader();
                   }
