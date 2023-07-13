@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "1060128600441",
-    "project_id": "addiestore-b82e3",
-    "storage_bucket": "addiestore-b82e3.appspot.com"
+    "project_number": "637767849233",
+    "project_id": "parchoon-3f595",
+    "storage_bucket": "parchoon-3f595.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1060128600441:android:b3df2555db9655d449ffa8",
+        "mobilesdk_app_id": "1:637767849233:android:0ad0a67b3370974ffea8b0",
         "android_client_info": {
-          "package_name": "com.addie.store"
+          "package_name": "com.grocery.delivery.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1060128600441-9r82varbqgamplfd6j7cplfpt3pvutq0.apps.googleusercontent.com",
+          "client_id": "637767849233-og3d7plikke8k2s7o77ekr25ha1foks5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.addie.store",
+            "package_name": "com.grocery.delivery.app",
             "certificate_hash": "33d8ab916ef52289f5f54a84b6299c4c65a8aa0a"
           }
         },
         {
-          "client_id": "1060128600441-2v8e9jh8ei78an8bsq25n3q2bn338obc.apps.googleusercontent.com",
+          "client_id": "637767849233-3rtp1tpitrb31kevnuqtl4skgdl38cjo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBVStG6IVLwRPj2-vcFsFFLBZy96PYH8fg"
+          "current_key": "AIzaSyDWe4MEgOCC9YvCbTipeSOGW5IEii1snAY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1060128600441-2v8e9jh8ei78an8bsq25n3q2bn338obc.apps.googleusercontent.com",
+              "client_id": "637767849233-3rtp1tpitrb31kevnuqtl4skgdl38cjo.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
