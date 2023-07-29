@@ -19,10 +19,26 @@ class DbService {
         .then((value) => print("profile added successfully"));
   }
 
-  static Future<void> getProfile() async {
-    final TabViewController c = Get.find();
+  static Future<UserProfileModel> getProfile() async {
     var profile =
         await firestore.collection(Strings.USER_PROFILE).doc(uid).get();
-    c.userProfile = UserProfileModel.fromJson(profile.data());
+    var userProfile = UserProfileModel.fromJson(profile.data());
+    return userProfile;
+  }
+
+  static Future updateProfile(
+      {String? fullName, String? phoneNumber, String? profilePic}) async {
+    Map<String, dynamic> data = {};
+    fullName != null ? data["full_name"] = fullName : null;
+    phoneNumber != null ? data["phone_number"] = phoneNumber : null;
+    profilePic != null ? data["profile_pic"] = profilePic : null;
+    try {
+      var updated = await firestore
+          .collection(Strings.USER_PROFILE)
+          .doc(uid)
+          .update(data);
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }

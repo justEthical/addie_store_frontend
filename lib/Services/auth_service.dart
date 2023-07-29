@@ -71,7 +71,7 @@ class AuthService {
           full_name: user!.displayName,
           email: user!.email,
           phone_number: user!.phoneNumber??"",
-          profile_pic: user!.photoURL??"",
+          profile_pic: user!.photoURL!??"",
         ));
         await loginPersistent();
         Get.offAll(TabView());

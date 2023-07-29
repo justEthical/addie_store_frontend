@@ -1,16 +1,12 @@
 import 'package:addie_store/CommonWidgets/app_bar.dart';
 import 'package:addie_store/CommonWidgets/custom_loader.dart';
-import 'package:addie_store/Constants/color_constants.dart';
+import 'package:addie_store/Controllers/profile_tab_ctrl.dart';
 import 'package:addie_store/Controllers/tab_controller.dart';
 import 'package:addie_store/Services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:random_avatar/random_avatar.dart';
 
 import 'Widgets/profile_option_tile.dart';
 import 'Widgets/profile_picture.dart';
@@ -24,6 +20,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final TabViewController tvc = Get.find();
+  final ProfileTabController c = Get.put(ProfileTabController());
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 22,
               child: Center(
                   child: Text(
-                tvc.userProfile!.email!,
+                tvc.userProfile.value!.email!,
                 overflow: TextOverflow.ellipsis,
                 style:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
@@ -74,7 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () {},
                     icon: FeatherIcons.phone,
                     heading: "Phone",
-                    content: tvc.userProfile!.phone_number!,
+                    content: tvc.userProfile.value!.phone_number!,
                   ),
                   ProfileOptionTile(
                       onTap: () {},

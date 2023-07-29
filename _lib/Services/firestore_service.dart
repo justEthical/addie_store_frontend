@@ -23,6 +23,6 @@ class DbService {
     final TabViewController c = Get.find();
     var profile =
         await firestore.collection(Strings.USER_PROFILE).doc(uid).get();
-    c.userProfile = UserProfileModel.fromJson(profile.data());
+    c.userProfile.value = UserProfileModel.fromJson(profile.data());
   }
 }

@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 class UserProfileModel {
   String? full_name;
   String? email;

@@ -1,6 +1,7 @@
 import 'package:addie_store/Constants/color_constants.dart';
 import 'package:addie_store/Controllers/tab_controller.dart';
 import 'package:addie_store/Models/user_profile_model.dart';
+import 'package:addie_store/Screens/Profile/Widgets/pick_image_bottom_sheet.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -22,7 +23,7 @@ class _ProfilePictureState extends State<ProfilePicture> {
 
   @override
   Widget build(BuildContext context) {
-    var pic = RandomAvatar(tvc.userProfile!.email!,
+    var pic = RandomAvatar(tvc.userProfile.value!.email!,
         width: 150, height: 150, trBackground: false);
     return Stack(
       children: [
@@ -33,27 +34,29 @@ class _ProfilePictureState extends State<ProfilePicture> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(150),
               border: Border.all(width: 4, color: ColorConstants.primaryText)),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(150),
-            child: tvc.userProfile!.profile_pic != ""
-                ? CachedNetworkImage(
-                    width: 150,
-                    height: 150,
-                    imageUrl: tvc.userProfile!.profile_pic!,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  )
-                : pic,
-          ),
+          child: Obx(() => ClipRRect(
+                borderRadius: BorderRadius.circular(150),
+                child: tvc.profilePic.value != ""
+                    ? CachedNetworkImage(
+                        width: 150,
+                        height: 150,
+                        imageUrl: tvc.userProfile.value!.profile_pic!,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) =>
+                            const CircularProgressIndicator(),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                      )
+                    : pic,
+              )),
         ),
         Positioned(
           right: 0,
           bottom: 0,
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Get.bottomSheet(const PickImageBottomSheet());
+            },
             child: Container(
               width: 40,
               height: 40,
