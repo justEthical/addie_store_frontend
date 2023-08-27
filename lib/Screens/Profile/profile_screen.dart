@@ -2,6 +2,7 @@ import 'package:addie_store/CommonWidgets/app_bar.dart';
 import 'package:addie_store/CommonWidgets/custom_loader.dart';
 import 'package:addie_store/Controllers/profile_tab_ctrl.dart';
 import 'package:addie_store/Controllers/tab_controller.dart';
+import 'package:addie_store/Screens/Profile/Widgets/logout_dialog.dart';
 import 'package:addie_store/Services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var userProfile = tvc.userProfile.value!;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CommonAppBar.tabScreensAppBar(title: "Profile"),
@@ -71,7 +73,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () {},
                     icon: FeatherIcons.phone,
                     heading: "Phone",
-                    content: tvc.userProfile.value!.phone_number!,
+                    content: userProfile.phone_number!,
                   ),
                   ProfileOptionTile(
                       onTap: () {},
@@ -95,9 +97,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       icon: FeatherIcons.gift),
                   ProfileOptionTile(
                     onTap: () async {
-                      CustomLoader.showLoader();
-                      await AuthService.logout();
-                      CustomLoader.hideLoader();
+                      Get.defaultDialog(
+                          titleStyle: const TextStyle(fontSize: 0),
+                          content: const LogoutDialog());
                     },
                     icon: FeatherIcons.logOut,
                     content: "Logout",
@@ -109,3 +111,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
+
+// CustomLoader.showLoader();
+//                       await AuthService.logout();
+//                       CustomLoader.hideLoader();
